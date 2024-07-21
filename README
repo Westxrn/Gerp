@@ -1,5 +1,5 @@
 # Title of the Assignment
-Your Name: Weston Starbird
+Your Name: Iston Starbird
 
 ## Purpose
 
@@ -77,26 +77,26 @@ execution: ./gerp <DirectoryToIndex> <OutputFile>
 
 
 ## Data Structures and Algorithms
-Our main ADT was the Hashmap class which we implemented manually with the help
-of the C++ default hashing function. We used this data structure to store the
-words and their corresponding file paths. To handle collisions, we used chaining
-to store multiple values at the same index. We thought chaining was the best
-choice because we needed similar permutations of the same word to be hashed
-to the same index. While our building of the index unfortunately quite long,
-our queries were handled extremely fast since the Hashmap class has an average
+The main ADT was the Hashmap class which I implemented manually with the help
+of the C++ default hashing function. I used this data structure to store the
+words and their corresponding file paths. To handle collisions, I used chaining
+to store multiple values at the same index. I thought chaining was the best
+choice because I needed similar permutations of the same word to be hashed
+to the same index. While the building of the index unfortunately quite long,
+the queries Ire handled extremely fast since the Hashmap class has an average
 time complexity of O(1) for insertion and retrieval. A hashmap with chaining
 here made the most sense overall due to the mapping of words to file paths.
 
-We decided to template the Hashmap class in order to store both the words and
-the file paths. While the words and file paths were stored as strings, we
+I decided to template the Hashmap class in order to store both the words and
+the file paths. While the words and file paths Ire stored as strings, I
 needed to pair them both with different data types, being a wordOccurences
 struct and a vector of integers respectively.
 
 To store auxillary data such as the file paths and the respective line numbers
-for each word, we used a Hashmap class. This was used to store the file paths,
-which were mapped to a vector of line numbers. This was useful for printing
-into the output file, as we needed to know the line numbers of the words that
-were found in the files. 
+for each word, I used a Hashmap class. This was used to store the file paths,
+which Ire mapped to a vector of line numbers. This was useful for printing
+into the output file, as I needed to know the line numbers of the words that
+Ire found in the files. 
 
 The use cases for a Hashmap class are very versatile, as it can be used to
 map keys to values, store dataa in a key-value pair, and retrieve data in
@@ -108,26 +108,24 @@ where the hashmap can be used to store the frequency of each element in an
 array. This is useful for counting the frequency of elements in a list, as
 it can be done in O(n) time.
 
-The algorithms we used were mainly for searching and indexing the words in the
-files. To index all of the words in the files, we used a recursive algorithm
+The algorithms I used Ire mainly for searching and indexing the words in the
+files. To index all of the words in the files, I used a recursive algorithm
 that started at the root of the directory and traversed through all of the
 files. This algorithm was used to index all of the words in the files, and
 was implemented in the Index class.
 
 ## Testing
-For phase 1 of the project we mainly relied on the unit_test framework to test
-our preliminary classes. During this unit testing we made sure to test every
-function of each class, under both normal and irregular circumstances. We
-followed a regular, bigger data, and edge-case pattern to do our unit testing.
+For phase 1 of the project I mainly relied on the unit_test framework to test
+the preliminary classes. During this unit testing I made sure to test every
+function of each class, under both normal and irregular circumstances. I
+folloId a regular, bigger data, and edge-case pattern to do the unit testing.
 
-For phase 2 of the project, and to test the main program, we mainly relied on
-diff testing against the demo program against the same inputs. We made sure to
-push our program to its limits by testing on a high amount of data. We created
+For phase 2 of the project, and to test the main program, I mainly relied on
+diff testing against the demo program against the same inputs. I made sure to
+push the program to its limits by testing on a high amount of data. I created
 directories with edge-case file organization, such as empty/bad folders,
-empty files, folders with many files, and so on. We also diff tested using
-input text files that included long strings of commands that were more irregular
-than what was given on the spec. Generally, we just relied on diff testing
-against the demo program using the provided directories and our own as well.
+empty files, folders with many files, and so on. I also diff tested using
+input text files that included long strings of commands that Ire more irregular
+than what was given on the spec. Generally, I just relied on diff testing
+against the demo program using the provided directories and the own as Ill.
 
-## Time Spent
-We spent approximately 30 hours on this assignment.
