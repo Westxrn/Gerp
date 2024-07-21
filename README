@@ -1,0 +1,133 @@
+# Title of the Assignment
+Your Name: Weston Starbird, Elki Laranas
+
+## Purpose
+
+Gerp is a command-line utility designed to index and search text within files 
+across a directory structure. It enables users to perform fast and efficient 
+queries similar to Unix's grep command but with additional functionalities such 
+as case-insensitive searches and dynamic output file management. Gerp builds a 
+searchable index of files, allowing users to quickly locate specific words or 
+phrases within the indexed directories, providing results directly to an output 
+file specified by the user.
+
+## Acknowledgments
+https://www.diffchecker.com/text-compare/
+https://cplusplus.com/reference/
+
+## Files
+
+Test Files for Gerp Program
+test1.txt
+- **Content Description**: Contains a mixture of plain text and Gerp command tri
+ggers such as `@i` for case insensitivity and `@f` for changing output files.
+- **Purpose**: Tests the program's ability to handle multiple command switches, 
+case-insensitive searches, and output file redirection within a single stream of
+text.
+test2.txt
+- **Content Description**: Includes plain text interspersed with commands affect
+ing search sensitivity and output file changes.
+- **Purpose**: Tests the program's response to changing output files mid-query a
+nd handling mixed case searches.
+test3.txt
+- **Content Description**: Features commands for changing the output file and en
+abling case-insensitive searches, placed amidst generic text.
+- **Purpose**: Aimed at testing output file redirection and the toggle of case s
+ensitivity in search operations, assessing the program’s capability to follow co
+mmand sequences.
+test4.txt
+- **Content Description**: Starts with simple text and introduces commands for c
+hanging output files and stopping execution.
+- **Purpose**: Tests the program's functionality to handle output file switching
+and proper termination of processing upon encountering the `@quit` command.
+
+Program and Support Files
+Gerp.h, 
+Gerp.cpp, 
+main.cpp
+- **Purpose**: The primary source files for the Gerp application, containing def
+initions and implementations of the Gerp class functions, main execution logic, 
+and utility functions for processing and searching files.
+
+Index.h, Index.cpp
+- **Purpose**: Handles the indexing of words within files, including functions f
+or adding words to the index, searching within the index, and managing case sens
+itivity.
+
+Custom Hashmap Implementation (Hashmap.h)
+- **Purpose**: A template-based implementation used within the Index class for e
+fficient data storage and retrieval, tailored to handle specific requirements of
+the Gerp program such as custom hash functions and equality checks.
+
+Utility Classes (FSTree.h, DirNode.h)
+- **Purpose**: These pre-implemented classes provide functionality for represent
+ing and navigating directory structures, crucial for indexing files in a directo
+ry as specified by the Gerp program.
+
+Makefile
+- **Purpose**: Script for compiling the Gerp program and linking the necessary o
+bject files, ensuring the program is built correctly with all dependencies resol
+ved.
+
+
+## Compilation and Execution
+
+making: 'make' or 'make' gerp 
+execution: ./gerp <DirectoryToIndex> <OutputFile>
+
+
+## Data Structures and Algorithms
+Our main ADT was the Hashmap class which we implemented manually with the help
+of the C++ default hashing function. We used this data structure to store the
+words and their corresponding file paths. To handle collisions, we used chaining
+to store multiple values at the same index. We thought chaining was the best
+choice because we needed similar permutations of the same word to be hashed
+to the same index. While our building of the index unfortunately quite long,
+our queries were handled extremely fast since the Hashmap class has an average
+time complexity of O(1) for insertion and retrieval. A hashmap with chaining
+here made the most sense overall due to the mapping of words to file paths.
+
+We decided to template the Hashmap class in order to store both the words and
+the file paths. While the words and file paths were stored as strings, we
+needed to pair them both with different data types, being a wordOccurences
+struct and a vector of integers respectively.
+
+To store auxillary data such as the file paths and the respective line numbers
+for each word, we used a Hashmap class. This was used to store the file paths,
+which were mapped to a vector of line numbers. This was useful for printing
+into the output file, as we needed to know the line numbers of the words that
+were found in the files. 
+
+The use cases for a Hashmap class are very versatile, as it can be used to
+map keys to values, store dataa in a key-value pair, and retrieve data in
+constant time. One outside use of this data structure is in the implementation
+of a cache, where the most recently used items are stored in the hashmap. This
+is useful for storing data that is frequently accessed, as it can be retrieved
+in O(1) time. Another use case is in the implementation of a frequency counter,
+where the hashmap can be used to store the frequency of each element in an
+array. This is useful for counting the frequency of elements in a list, as
+it can be done in O(n) time.
+
+The algorithms we used were mainly for searching and indexing the words in the
+files. To index all of the words in the files, we used a recursive algorithm
+that started at the root of the directory and traversed through all of the
+files. This algorithm was used to index all of the words in the files, and
+was implemented in the Index class.
+
+## Testing
+For phase 1 of the project we mainly relied on the unit_test framework to test
+our preliminary classes. During this unit testing we made sure to test every
+function of each class, under both normal and irregular circumstances. We
+followed a regular, bigger data, and edge-case pattern to do our unit testing.
+
+For phase 2 of the project, and to test the main program, we mainly relied on
+diff testing against the demo program against the same inputs. We made sure to
+push our program to its limits by testing on a high amount of data. We created
+directories with edge-case file organization, such as empty/bad folders,
+empty files, folders with many files, and so on. We also diff tested using
+input text files that included long strings of commands that were more irregular
+than what was given on the spec. Generally, we just relied on diff testing
+against the demo program using the provided directories and our own as well.
+
+## Time Spent
+We spent approximately 30 hours on this assignment.
